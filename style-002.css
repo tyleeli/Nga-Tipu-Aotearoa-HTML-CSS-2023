@@ -1,0 +1,688 @@
+/*  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+  style-002.css
+
+  * * * This is your CSS Stylesheet to modify * * *
+
+  Author: Your name here
+  Date: creation date
+
+  CONTENTS:
+  ________
+
+  001.  CSS RESET
+  002.  GENERAL STYLES
+  003.  HEADER
+  004.  NAVIGATION MENU
+  005.  MAIN PAGE LAYOUT
+  006.  CARDS LAYOUT
+  007.  PAGE LAYOUT
+  008.  PLANT PAGE LAYOUT
+  009.  CONTACT FORM
+  010.  PAGE FOOTER
+
+  (to jump to any section of the Contents, use the section number (e.g. 002) in 'Find', Cmd-F) */
+
+@import url("reset.css");
+@import url("typography.css");
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+    
+    002.  GENERAL CSS STYLES
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/* Resetting margins and padding on all containers */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Assigning colours to variables */
+html {
+    --dark-text: #1A1919;
+    --light-text: #fcfcfa;
+    --cream-text: #f6ead0;
+    --light-background: #1B992B;
+    --dark-background: #002F15;
+    --card-background: #E62322;
+    --page-background: #0b4d45;
+    --medium-dark-text: #055723;
+    --dark-border-colour: #08331c;
+    --slide-out-menu-background: #E62322;
+    --footer-background: #E62322;
+    --description-text-colour: #fcfcfa;
+    --light-silver: #fcfcfa;
+}
+
+/* Setting the base typeface, font weight and colour, and background colour for all pages */
+body {
+    font-family: var(--typeface-inter);
+    font-weight: 600;
+    color: var(--light-silver);
+    background-color: var(--page-background);
+}
+
+/* This is the main content container for all pages */
+main {
+    max-width: 1200px;
+    background-color: var(--light-background);
+    margin: 0 auto;
+    /* The container is centred within the page */
+}
+
+.external-link {
+    text-decoration: underline;
+    color: var(--cream-text);
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+    
+    003.  HEADER
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/*  Setting the layout for the Header. Notice there is no width or height, 
+    the container expands or contracts depending on the text or images */
+header {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--light-background);
+    padding: 2rem 0 2rem 2rem;
+    min-height: 7em;
+}
+
+/* Setting the typographic style for the main page title */
+header h1 {
+    color: var(--cream-text);
+    font-weight: 800;
+    font-family: var(--typeface-space-grotesk);
+    font-size: clamp(2rem, 2vw + 1rem, 2.8rem);
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+      
+    004.  NAVIGATION MENU - RESPONSIVE TO DEVICE WIDTHS
+
+    Responsive menu adapted from https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+    
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.topnav {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1rem;
+}
+
+.topnav a {
+    color: var(--cream-text);
+    text-decoration: none;
+    font-size: 1.15rem;
+}
+
+.topnav a:hover {
+    text-decoration: underline;
+}
+
+.topnav a.current-page {
+    font-weight: 600;
+}
+
+.icon {
+    position: absolute;
+    display: none;
+    color: var(--cream-text);
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 475px) {
+    header {
+        padding: 2rem 0 2rem 1rem;
+        min-height: 6rem;
+    }
+
+    .topnav {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 0.7rem;
+    }
+
+    .topnav a {
+        display: none;
+    }
+
+    .icon {
+        float: right;
+        display: block;
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .topnav.responsive {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40vw;
+        margin-top: 0;
+        padding: 6rem 2rem 4rem 2rem;
+        background-color: var(--slide-out-menu-background);
+    }
+
+    .icon {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    header h1 {
+        max-width: 260px;
+        line-height: 100%;
+    }
+
+    header {
+        height: 9rem;
+        padding-bottom: 0;
+    }
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    005.  HOME PAGE LAYOUT
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.introduction {
+    background-color: var(--cream-text);
+    padding: 2rem;
+}
+
+.introduction h2 {
+    color: var(--medium-dark-text);
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.introduction p {
+    color: var(--medium-dark-text);
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.readmore-button {
+    background-color: var(--dark-background);
+    border: none;
+    color: var(--cream-text);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all .3s;
+    border-radius: 5px;
+}
+
+.readmore-button:hover {
+    background-color: var(--dark-background);
+    color: var(--light-green-background);
+    box-shadow: none;
+}
+
+.readmore-button:active {
+    box-shadow: inset 0 2px 15px rgba(0, 0, 0, .3);
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    006.  CARDS LAYOUT - for any page that has a grid of cards
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/* This sets the grid layout for the page. */
+@supports (display: grid) {
+    .cards__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-gap: 2rem;
+        margin: 2rem;
+    }
+}
+
+/* A 'card' is just a container for text and images */
+.card {
+    text-align: center;
+    background-color: var(--card-background);
+    padding: 2rem 2rem 1.4rem 2rem;
+    border: var(--dark-border-colour) solid .6rem;
+    border-radius: 2.6rem;
+    text-decoration: none;
+}
+
+.card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: var(--dark-border-colour) solid .6rem;
+    border-radius: 1.2rem;
+}
+
+.card__name {
+    color: var(--cream-text);
+    font-weight: 800;
+    margin-top: .8rem;
+    font-family: var(--typeface-space-grotesk);
+    line-height: 1.5rem;
+}
+
+.card__description {
+    color: var(--cream-text);
+    font-weight: 400;
+    font-size: .8rem;
+    margin: .4rem 0;
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    007.  GENERIC PAGE LAYOUT
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+.generic__page {
+    padding: 2rem 2rem 2rem 2rem;
+    margin: 0 2rem 2rem 2rem;
+    min-height: 500px;
+    background-color: var(--card-background);
+    color: var(--cream-text);
+}
+
+.generic__page__h2 {
+    font-weight: 400;
+    font-size: 2.6em;
+}
+
+.generic__page__h3 {
+    font-weight: 300;
+    font-size: 2em;
+}
+
+.generic__page__intro {
+    font-weight: 400;
+    font-size: 1em;
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    008.  SINGLE ITEM  - PAGE LAYOUT
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/*  Using 'grid-template-areas' we can design the layout of the containers 
+    For Desktop and Tablet device widths, display containers in 2 columns */
+@supports (display: grid) {
+    .single-item {
+        display: grid;
+        gap: 1.5rem;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+            'one two'
+            'one three'
+            'four .'
+            'five six';
+        padding-block: 2rem;
+        width: min(95%, 70rem);
+        margin-inline: auto;
+        background-color: var(--cream-text);
+        color: var(--medium-dark-text);
+        padding: 2rem;
+        border: var(--card-background) solid .7rem;
+        border-radius: 3rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* For mobile device widths, stack containers in a single column */
+@media screen and (max-width: 875px) {
+    .single-item {
+        grid-template-areas:
+            'two'
+            'one'
+            'three'
+            'four'
+            'five'
+            'six';
+        margin-left: 1rem;
+    }
+}
+
+.single-item__image {
+    grid-area: one;
+    width: 100%;
+    max-width: 24rem;
+    border: var(--card-background) solid .8rem;
+    border-radius: 3rem;
+}
+
+.single-item__h2 {
+    grid-area: two;
+    font-weight: 400;
+    font-size: 2.6rem;
+}
+
+.single-item__h3 {
+    grid-area: three;
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: var(--card-background);
+}
+
+.single-item__introduction {
+    grid-area: four;
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+.single-item__block-one {
+    grid-area: five;
+}
+
+.single-item__block-two {
+    grid-area: six;
+}
+
+.single-item__h4 {
+    color: var(--card-background);
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.single-item__p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.single-item__ul {
+    list-style-type: none;
+}
+
+.single-item__ul li {
+    padding-left: 1rem;
+    background-image: url(images/list-image.svg);
+    background-position: 0 .28rem;
+    background-size: .7rem .7rem;
+    background-repeat: no-repeat;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+/* This button is unused at the moment : ) */
+.next-button {
+    background-color: var(--dark-text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 0;
+    font-size: 26px;
+    color: var(--off-white);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    display: none;
+}
+
+.next-button i {
+    margin-left: .2rem;
+}
+
+.next-button:hover {
+    background-color: var(--dark-text);
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    009.  CONTACT FORM
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+/*  Here is the Contact Form arranged in two columns
+    A dot denotes a blank space, so the elements on those rows are left-aligned */
+@supports (display: grid) {
+    .contact-form {
+        display: grid;
+        gap: 1.5rem;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+            'c1 .'
+            'c2 c3'
+            'c4 c7'
+            'c5 .'
+            'c6 .'
+            'c8 .';
+        padding-block: 2rem;
+        width: min(95%, 70em);
+        margin-inline: auto;
+    }
+}
+
+/*  For mobile device widths, elements are stacked in a single column */
+@media screen and (max-width: 65.875em) {
+    .contact-form {
+        display: grid;
+        grid-template-areas:
+            'c1'
+            'c2'
+            'c3'
+            'c4'
+            'c5'
+            'c6'
+            'c7'
+            'c8';
+        margin-left: 1em;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        width: 90vw;
+    }
+}
+
+.contact-form__heading {
+    grid-area: c1;
+    color: var(--dark-text);
+    font-weight: 400;
+    font-size: 2.6em;
+}
+
+.contact-form label {
+    min-width: 100rem;
+}
+
+.contact-form h3,
+.contact-form p {
+    color: var(--cream-text);
+    font-weight: 500;
+}
+
+.contact-form__name {
+    grid-area: c2;
+}
+
+.contact-form__email {
+    grid-area: c3;
+}
+
+.contact-form__role {
+    grid-area: c4;
+}
+
+.contact-form__pwd {
+    grid-area: c5;
+}
+
+.contact-form__message {
+    grid-area: c6;
+}
+
+.contact-form__browser {
+    grid-area: c7;
+}
+
+.contact-form__submit {
+    grid-area: c8;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 20.4rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0 1.4rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    background-color: var(--light-silver);
+    color: var(--light-background);
+}
+
+.contact-form input,
+.contact-form select {
+    height: 2.8rem;
+    width: 30em;
+}
+
+.contact-form__submit button {
+    background-color: var(--dark-background);
+    border: none;
+    color: var(--off-white);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all .3s;
+    border-radius: 5px;
+}
+
+.contact-form__submit button:hover {
+    color: var(--light-green-background);
+    box-shadow: none;
+}
+
+.contact-form__submit button:active {
+    box-shadow: inset 0 2px 15px rgba(0, 0, 0, .3);
+}
+
+.success-page {
+    margin: 5vw;
+}
+
+/* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+    
+    010.  PAGE FOOTER
+
+    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
+
+footer {
+    background-color: var(--footer-background);
+    padding: 2rem;
+    color: var(--cream-text);
+}
+
+footer p {
+    font-size: clamp(.8rem, 2vw + 1rem, 1.2rem);
+    font-weight: 400;
+}
+
+@supports (display: grid) {
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-gap: 2rem;
+        margin-top: 2rem;
+    }
+}
+
+.footer__menu {
+    padding: 2rem;
+}
+
+.footer__menu__heading {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+ul.footer__menu__list {
+    list-style-type: none;
+}
+
+ul.footer__menu__list li a {
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--off-white);
+}
+
+ul.footer__menu__list li a:hover {
+    text-decoration: underline;
+}
+
+.footer__site-details p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 1121px) {
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .footer__menu {
+        padding: 0;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__menu {
+        padding: 0;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* = = =  E N D = = = */
